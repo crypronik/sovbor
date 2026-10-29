@@ -310,7 +310,7 @@
       $('[data-in]').textContent = start ? fmt(start) : 'выберите';
       $('[data-out]').textContent = end ? fmt(end) : (start ? 'выберите' : '—');
       $('#f-in').value = start ? key(start) : ''; $('#f-out').value = end ? key(end) : '';
-      if (!c) { sumEl.innerHTML = '<div class="empty-sum"><i class="ph ph-calendar-dots"></i><b>' + (start ? 'Теперь дата выезда' : 'Выберите даты в календаре') + '</b><span class="t-sm">' + (start ? 'Нажмите на день, когда планируете уехать. День выезда в стоимость не входит.' : 'Сначала день заезда, затем день выезда. Цена посчитается сразу.') + '</span></div>'; return; }
+      if (!c) { if ($('[data-sum-note]')) $('[data-sum-note]').innerHTML = ''; sumEl.innerHTML = '<div class="empty-sum"><i class="ph ph-calendar-dots"></i><span class="t-sm">' + (start ? 'Теперь выберите день выезда. Он в стоимость не входит.' : 'Нажмите день заезда, затем день выезда. Цена посчитается сразу.') + '</span></div>'; return; }
       var promo = promoBox && promoBox.checked;
       var h = '<div class="lines">';
       if (c.wd) h += '<div><span>' + c.wd + ' ' + plural(c.wd, 'ночь', 'ночи', 'ночей') + ' × ' + rub(PRICE_WEEKDAY) + ' <span class="t-xs" style="color:var(--dim)">пн–чт</span></span><b>' + rub(c.wd * PRICE_WEEKDAY) + '</b></div>';
@@ -319,9 +319,14 @@
       if (promo) { var disc = Math.round(total * 0.05); total -= disc; h += '<div><span>Промокод SOVA5, 5%</span><b style="color:var(--moss)">−' + rub(disc) + '</b></div>'; }
       h += '</div><div class="total"><span class="muted">Итого за ' + c.n + ' ' + plural(c.n, 'ночь', 'ночи', 'ночей') + '</span><b>' + rub(total) + '</b></div>';
       h += '<div class="lines"><div><span>Аванс 50% при брони</span><b>' + rub(Math.round(total / 2)) + '</b></div><div><span>Остаток при заезде</span><b>' + rub(total - Math.round(total / 2)) + '</b></div></div>';
-      if (c.budni) h += '<div class="hint"><i class="ph ph-sparkle"></i><span>Даты подходят под акцию «Будни в лесу»: платите за 2 ночи, живёте 3. Укажите её в пожеланиях, администратор пересчитает.</span></div>';
-      h += '<div class="hint warn"><i class="ph ph-info"></i><span>Расчёт предварительный. Свободные даты, праздничный тариф и скидки администратор подтвердит до оплаты.</span></div>';
-      sumEl.innerHTML = h;
+      h = '<div class="bk-total"><div class="lines">' + h.split('<div class="lines">')[1].split('</div><div class="total">')[0] + '</div><div class="total"><span class="muted">Итого за ' + c.n + ' ' + plural(c.n, 'ночь', 'ночи', 'ночей') + '</span><b>' + rub(total) + '</b><small>аванс ' + rub(Math.round(total / 2)) + '</small></div></div>';
+      if (c.budni) h += '<div class="hint budni"><i class="ph ph-sparkle"></i><span>Даты подходят под акцию «Будни в лесу»: платите за 2 ночи, живёте 3. Укажите её в пожеланиях, администратор пересчитает.</span></div>';
+      h += '<p class="t-xs" style="color:var(--dim)">Расчёт предварительный: даты, праздничный тариф и скидки подтвердит администратор.</p>';
+      var noteEl = $('[data-sum-note]');
+      if (noteEl) {
+        var parts = h.split(/(?=<div class="hint budni">)|(?=<p class="t-xs")/);
+        sumEl.innerHTML = parts[0]; noteEl.innerHTML = parts.slice(1).join('');
+      } else sumEl.innerHTML = h;
       $('#f-total').value = total;
     }
     if (promoBox) promoBox.addEventListener('change', summary);

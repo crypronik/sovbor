@@ -102,40 +102,41 @@
 <g class="fish"><path d="M0 0c10-8 26-8 34 0-8 8-24 8-34 0Zm34 0 10-7v14Z" fill="#3E5A66"/></g></svg></div>
   <div class="wrap">
     <div class="head"><span class="eyebrow">Бронирование</span><h2 class="h2">Выберите даты и узнайте цену сразу</h2><p class="lead">Заявка ни к чему не обязывает. Бронь подтверждается после аванса 50%.</p></div>
-    <div class="book">
-      <div class="card rv" data-cal>
+    <div class="book bk1 rv">
+      <div class="bk-cal" data-cal>
         <div class="cal-head"><b data-cal-title>Календарь</b><div class="gal-ctrl"><button class="icon-btn" type="button" data-cal-prev aria-label="Предыдущий месяц"><i class="ph ph-caret-left"></i></button><button class="icon-btn" type="button" data-cal-next aria-label="Следующий месяц"><i class="ph ph-caret-right"></i></button></div></div>
-        <div class="cal-months"><div class="skel" style="height:280px"></div></div>
-        <div class="cal-legend"><span><i style="background:var(--accent)"></i>Заезд и выезд</span><span><i style="background:rgba(233,180,76,.25)"></i>Ваши ночи</span><span><i style="background:#EBD9B0;opacity:.5"></i>Пятница, суббота, воскресенье: 11 000 ₽</span></div>
-        <p class="t-sm" data-dates-err hidden style="color:#E8937F;margin-top:16px">Выберите дату заезда и дату выезда, чтобы отправить заявку.</p>
+        <div class="cal-months"><div class="skel" style="height:260px"></div></div>
+        <div class="bk-note" data-sum-note aria-live="polite"></div>
+        <div class="cal-legend"><span><i style="background:var(--accent)"></i>Заезд и выезд</span><span><i style="background:rgba(233,180,76,.25)"></i>Ваши ночи</span><span><i style="background:#EBD9B0;opacity:.5"></i>Пт, сб, вс: 11 000 ₽</span></div>
+        <p class="t-sm" data-dates-err hidden style="color:#E8937F;margin-top:12px">Выберите дату заезда и дату выезда.</p>
       </div>
-      <div class="sum">
-        <div class="card rv rv-d1" style="display:grid;gap:24px">
+      <div class="bk-form">
+        <div class="bk-strip">
           <div class="sum-dates"><div><small>Заезд с 15:00</small><b data-in>выберите</b></div><div><small>Выезд до 12:00</small><b data-out>—</b></div></div>
           <div data-sum aria-live="polite"></div>
-          <form class="form" data-book-form novalidate>
-            <input type="hidden" name="checkin" id="f-in"><input type="hidden" name="checkout" id="f-out"><input type="hidden" name="total_estimate" id="f-total">
-            <div class="row2">
-              <div class="field"><label for="f-name">Имя</label><input class="input" id="f-name" name="name" autocomplete="given-name" placeholder="Анна" data-req><span class="msg">Укажите имя</span></div>
-              <div class="field"><label for="f-last">Фамилия</label><input class="input" id="f-last" name="surname" autocomplete="family-name" placeholder="Соколова" data-req><span class="msg">Укажите фамилию</span></div>
-            </div>
-            <div class="row2">
-              <div class="field"><label for="f-email">Почта</label><input class="input" id="f-email" name="email" type="email" autocomplete="email" placeholder="anna@yandex.ru" data-req><span class="msg">Проверьте адрес почты</span></div>
-              <div class="field"><label for="f-phone">Телефон <em>по желанию</em></label><input class="input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (916) 482 17 35"></div>
-            </div>
-            <div class="row2">
-              <div class="field"><label for="f-ad">Взрослые</label><div class="sel"><select class="input" id="f-ad" name="adults"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div></div>
-              <div class="field"><label for="f-ch">Дети</label><div class="sel"><select class="input" id="f-ch" name="children"><option selected>0</option><option>1</option><option>2</option><option>3</option></select></div></div>
-            </div>
-            <div class="field"><label for="f-wish">Пожелания <em>акция, питомец, кроватка</em></label><textarea class="input" id="f-wish" name="wishes" placeholder="Едем на день рождения, нужна детская кроватка"></textarea></div>
-            <label class="check"><input type="checkbox" id="f-promo" name="promo" value="SOVA5"> <span>Применить промокод SOVA5, скидка 5%</span></label>
-            <label class="check"><input type="checkbox" name="consent" data-req> <span>Принимаю <a href="../rules/index.html">правила проживания</a> и <a href="../privacy/index.html">политику обработки данных</a></span></label>
-            <p class="form-err t-sm" style="color:#E8937F" hidden></p>
-            <button class="btn btn-primary" type="submit" style="width:100%">Отправить заявку <i class="ph ph-arrow-right"></i></button>
-            <p class="t-xs" style="color:var(--dim);text-align:center">Оплата переводом на карту или по СБП</p>
-          </form>
-          <div class="ok" role="status" data-book-ok><i class="ph ph-seal-check"></i><b>Заявка у администратора</b><p data-ok-text></p><p class="t-xs" data-ok-note hidden style="color:var(--dim)">Режим предпросмотра: адрес обработчика заявок пока не подключён в настройках сайта.</p></div>
         </div>
+        <form class="form" data-book-form novalidate>
+          <input type="hidden" name="checkin" id="f-in"><input type="hidden" name="checkout" id="f-out"><input type="hidden" name="total_estimate" id="f-total">
+          <div class="row2">
+            <div class="field"><label for="f-name">Имя</label><input class="input" id="f-name" name="name" autocomplete="given-name" placeholder="Анна" data-req><span class="msg">Укажите имя</span></div>
+            <div class="field"><label for="f-last">Фамилия</label><input class="input" id="f-last" name="surname" autocomplete="family-name" placeholder="Соколова" data-req><span class="msg">Укажите фамилию</span></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="f-email">Почта</label><input class="input" id="f-email" name="email" type="email" autocomplete="email" placeholder="anna@yandex.ru" data-req><span class="msg">Проверьте адрес почты</span></div>
+            <div class="field"><label for="f-phone">Телефон <em>по желанию</em></label><input class="input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (916) 482 17 35"></div>
+          </div>
+          <div class="row3">
+            <div class="field"><label for="f-ad">Взрослые</label><div class="sel"><select class="input" id="f-ad" name="adults"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div></div>
+            <div class="field"><label for="f-ch">Дети</label><div class="sel"><select class="input" id="f-ch" name="children"><option selected>0</option><option>1</option><option>2</option><option>3</option></select></div></div>
+            <div class="field"><label for="f-wish">Пожелания</label><input class="input" id="f-wish" name="wishes" placeholder="Акция, питомец, кроватка"></div>
+          </div>
+          <label class="check"><input type="checkbox" id="f-promo" name="promo" value="SOVA5"> <span>Промокод SOVA5, скидка 5%</span></label>
+          <label class="check"><input type="checkbox" name="consent" data-req> <span>Принимаю <a href="../rules/index.html">правила</a> и <a href="../privacy/index.html">политику данных</a></span></label>
+          <p class="form-err t-sm" style="color:#E8937F" hidden></p>
+          <button class="btn btn-primary" type="submit" style="width:100%">Отправить заявку <i class="ph ph-arrow-right"></i></button>
+          <p class="t-xs" style="color:var(--dim);text-align:center">Бронь подтверждается авансом 50%. Карта или СБП</p>
+        </form>
+        <div class="ok" role="status" data-book-ok><i class="ph ph-seal-check"></i><b>Заявка у администратора</b><p data-ok-text></p><p class="t-xs" data-ok-note hidden style="color:var(--dim)">Режим предпросмотра: адрес обработчика заявок пока не подключён в настройках сайта.</p></div>
       </div>
     </div>
   </div>

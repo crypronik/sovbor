@@ -1245,3 +1245,65 @@ html { color-scheme: dark; scrollbar-color: #5A5340 #131209; scrollbar-width: th
 .owl-say.to-r.on { transform: translate(12px, -10px) scale(1); animation-name: sayFloatR; }
 .owl-say.to-r::after { right: auto; left: -6px; border-radius: 0 0 0 var(--r); }
 @keyframes sayFloatR { to { transform: translate(12px, -16px) scale(1); } }
+
+/* ================= Бронирование одной карточкой ================= */
+.bk1 { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-3xl); overflow: hidden; }
+.bk-cal { padding: var(--s-400); border-right: 1px solid var(--line); display: flex; flex-direction: column; }
+.bk-form { padding: var(--s-400); background: #1C1B15; }
+.bk1 .cal-head { margin-bottom: var(--s-200); }
+.bk1 .cal-months { gap: var(--s-300); }
+.bk1 .d { aspect-ratio: auto; height: 36px; font-size: 14px; }
+.bk1 .cal-grid .dow { padding-bottom: var(--s-50); }
+.bk1 .cal-legend { margin-top: var(--s-200); gap: var(--s-100) var(--s-200); }
+.bk-strip { margin-top: auto; padding-top: var(--s-300); display: grid; grid-template-columns: auto 1fr; gap: var(--s-200); align-items: stretch; }
+.bk-strip .sum-dates { grid-template-columns: 1fr; gap: var(--s-50); }
+.bk-strip .sum-dates div { padding: var(--s-75) var(--s-100); min-width: 150px; }
+.bk-strip [data-sum] { gap: var(--s-75); align-content: center; }
+.bk-strip .empty-sum { display: flex; align-items: center; gap: var(--s-100); padding: var(--s-200); height: 100%; }
+.bk-strip .empty-sum i { font-size: 24px; flex: none; }
+.bk-total { display: grid; grid-template-columns: 1fr auto; gap: var(--s-200); align-items: end; }
+.bk-total .lines { font-size: 12px; line-height: 16px; gap: var(--s-50); }
+.bk-total .total { display: grid; justify-items: end; border: 0; padding: 0; gap: 0; }
+.bk-total .total span { font-size: 12px; line-height: 16px; }
+.bk-total .total b { font-size: 30px; line-height: 36px; }
+.bk-total .total small { font-size: 12px; line-height: 16px; color: var(--accent); }
+.bk-strip .hint { padding: var(--s-75) var(--s-100); font-size: 12px; line-height: 16px; }
+.bk-form .form { gap: var(--s-200); }
+.bk-form .field { gap: var(--s-50); }
+.bk-form .field label { font-size: 12px; line-height: 16px; color: var(--muted); }
+.bk-form .input { min-height: 44px; padding: var(--s-75) var(--s-100); }
+.row3 { display: grid; gap: var(--s-200); grid-template-columns: 1fr 1fr 2fr; }
+.bk-form .check { font-size: 12px; line-height: 16px; align-items: center; }
+.bk-form .ok { margin: 0; }
+@media (max-width: 1023px) {
+  .bk1 { grid-template-columns: 1fr; }
+  .bk-cal { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 639px) {
+  .bk-cal, .bk-form { padding: var(--s-200); }
+  .bk-strip { grid-template-columns: 1fr; }
+  .bk-strip .sum-dates { grid-template-columns: 1fr 1fr; }
+  .row3 { grid-template-columns: 1fr 1fr; } .row3 .field:last-child { grid-column: span 2; }
+}
+/* в окне без лишнего обрамления */
+.bmodal .bm-panel { padding: var(--s-200) var(--s-300) var(--s-300); }
+.bmodal .bm-head { margin-bottom: var(--s-200); }
+.bk1 { align-items: stretch; }
+.bk-form { display: flex; flex-direction: column; gap: var(--s-200); }
+.bk-form .bk-strip { margin: 0; padding: 0 0 var(--s-200); border-bottom: 1px solid var(--line); grid-template-columns: 1fr; gap: var(--s-100); }
+.bk-form .bk-strip .sum-dates { grid-template-columns: 1fr 1fr; }
+.bk-form .bk-strip .hint { display: none; }
+.bk-form .bk-strip .hint.budni { display: flex; }
+.bk-cal .cal-legend { margin-top: auto; padding-top: var(--s-200); }
+.bk-note { margin-top: auto; display: grid; gap: var(--s-100); padding-top: var(--s-200); }
+.bk-note:empty { padding: 0; }
+.bk-note .hint { font-size: 12px; line-height: 16px; padding: var(--s-75) var(--s-100); }
+.bk-cal .cal-legend { margin-top: 0; }
+.bk-note:empty + .cal-legend { margin-top: auto; }
+@media (max-width: 639px) {
+  .bk-total { grid-template-columns: 1fr; }
+  .bk-total .total { justify-items: start; order: -1; }
+  .bk-total .lines div b { white-space: nowrap; }
+  .bk-form .row2 { grid-template-columns: 1fr 1fr; gap: var(--s-100); }
+  .bk-form .row2 .field label em { display: none; }
+}
