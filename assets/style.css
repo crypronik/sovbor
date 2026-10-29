@@ -1133,3 +1133,57 @@ select.input { appearance: none; background-image: none; cursor: pointer; }
 .map-col { display: grid; gap: var(--s-200); grid-template-rows: auto 1fr; min-width: 0; }
 .map-col .tabs { justify-self: start; }
 .map-col .map { min-height: 440px; }
+
+/* ================= Рисованные элементы по бокам ================= */
+.deco { position: absolute; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s var(--ease); }
+.deco.in { opacity: 1; }
+.deco svg { display: block; width: 100%; height: auto; overflow: visible; }
+.section > .wrap, .tagline > .wrap { position: relative; z-index: 1; }
+.side-l { left: 0; } .side-r { right: 0; }
+.at-top { top: 24px; } .at-mid { top: 50%; transform: translateY(-50%); } .at-bottom { bottom: 0; }
+.deco-branch { width: 220px; } .side-l.deco-branch { transform: scaleX(-1); }
+.deco-fox { width: 200px; } .deco-rod { width: 220px; } .deco-paws { width: 90px; } .deco-river { width: 140px; }
+.deco-pine { width: 170px; } .deco-mushrooms { width: 150px; }
+.side-r.deco-river { right: -20px; }
+@media (max-width: 1279px) { .deco { display: none; } }
+
+.deco .sway { transform-origin: 0% 35%; animation: dsway 5s var(--ease) infinite alternate; }
+.side-l .sway { transform-origin: 100% 35%; }
+.side-l.deco-branch .sway { transform-origin: 0% 35%; }
+.deco .sway.slow { transform-origin: 50% 100%; animation-duration: 7s; }
+@keyframes dsway { from { transform: rotate(-2deg); } to { transform: rotate(3deg); } }
+@keyframes dswayL { from { transform: scaleX(-1) rotate(-2deg); } to { transform: scaleX(-1) rotate(3deg); } }
+.deco .cone { transform-box: fill-box; transform-origin: 50% 0; animation: dsway 3s var(--ease) infinite alternate-reverse; }
+
+.deco-fox .fox-eyes, .deco-fox .ears { transform-box: fill-box; transform-origin: center; }
+.deco-fox .fox-eyes { animation: foxEyes 7s var(--ease) infinite; }
+@keyframes foxEyes { 0%, 30% { transform: scaleY(0); opacity: 0; } 36% { transform: scaleY(1.1); opacity: 1; } 40% { transform: scaleY(1); } 62% { transform: scaleY(1) translateX(0); } 70% { transform: translateX(6px); } 80% { transform: translateX(-4px); } 86% { transform: scaleY(1); opacity: 1; } 88% { transform: scaleY(.1); } 91% { transform: scaleY(1); } 96%, 100% { transform: scaleY(0); opacity: 0; } }
+.deco-fox .ears { animation: foxEars 7s var(--ease) infinite; }
+@keyframes foxEars { 0%, 30% { transform: translateY(14px); opacity: 0; } 38%, 92% { transform: none; opacity: 1; } 100% { transform: translateY(14px); opacity: 0; } }
+
+.deco-paws .paw { opacity: 0; animation: pawStep 6s var(--ease) calc(var(--i) * .35s) infinite; }
+@keyframes pawStep { 0% { opacity: 0; } 6% { opacity: .9; } 55% { opacity: .9; } 75%, 100% { opacity: 0; } }
+
+.deco-rod .float { animation: bob 2.6s var(--ease) infinite; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(3px); } 52% { transform: translateY(12px); } 60% { transform: translateY(1px); } }
+.deco-rod .ring { transform-box: fill-box; transform-origin: center; animation: ringOut 2.6s var(--ease) infinite; }
+.deco-rod .r2 { animation-delay: 1.3s; }
+@keyframes ringOut { from { transform: scale(.3); opacity: .8; } to { transform: scale(1.6); opacity: 0; } }
+.deco-rod .wave { animation: waveX 4s var(--ease) infinite alternate; } .deco-rod .w2 { animation-duration: 5s; }
+@keyframes waveX { to { transform: translateX(-10px); } }
+.deco-rod .fish { offset-path: path('M220 300C160 296 120 306 40 296'); animation: fishSwim 9s var(--ease) infinite; opacity: .8; }
+@keyframes fishSwim { 0% { offset-distance: 0%; opacity: 0; } 15% { opacity: .8; } 85% { opacity: .8; } 100% { offset-distance: 100%; opacity: 0; } }
+.deco-rod .fish path { transform: scaleX(-1); transform-box: fill-box; }
+
+.deco-river .flow { animation: flow 3s linear infinite; } .deco-river .f2 { animation-duration: 4.4s; }
+@keyframes flow { to { stroke-dashoffset: -64; } }
+.deco-river .reeds { transform-box: fill-box; transform-origin: 50% 100%; animation: dsway 3s var(--ease) infinite alternate; }
+.deco-pine .owlet { animation: blink 4s var(--ease) infinite; transform-box: fill-box; transform-origin: center; }
+.deco-mushrooms .ff-d circle { animation: ffly 6s var(--ease) infinite; --x: 12px; --y: -20px; }
+.deco-mushrooms .ff-d circle:nth-child(2) { animation-delay: 2s; --x: -10px; }
+@media (prefers-reduced-motion: reduce) { .deco * { animation: none !important; } .deco-fox .fox-eyes, .deco-fox .ears, .deco-paws .paw { opacity: 1; transform: none; } }
+.deco-branch { width: 300px; } .deco-fox { width: 260px; } .deco-rod { width: 280px; } .deco-paws { width: 120px; }
+.deco-river { width: 180px; } .deco-pine { width: 220px; } .deco-mushrooms { width: 190px; }
+@media (max-width: 1599px) { .deco { transform: scale(.75); } .side-l { transform-origin: left center; } .side-r { transform-origin: right center; } .at-mid { transform: translateY(-50%) scale(.75); } }
+
+@media (max-width: 1599px) { .side-l.deco-branch { transform: scaleX(-.75) scaleY(.75); } }

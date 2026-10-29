@@ -556,3 +556,11 @@
     });
   });
 })();
+
+/* Рисованные элементы появляются при прокрутке */
+(function () {
+  var d = document.querySelectorAll('.deco'); if (!d.length) return;
+  if (!('IntersectionObserver' in window)) { d.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .2 });
+  d.forEach(function (e) { io.observe(e); });
+})();
