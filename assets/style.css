@@ -1213,3 +1213,14 @@ body.bm-open .mbar, body.bm-open .nav { opacity: 0; pointer-events: none; }
 .map-col .tabs { max-width: 100%; }
 html, body { overflow-x: clip; }
 .map-col { grid-template-columns: minmax(0, 1fr); }
+
+/* Фирменная полоса прокрутки */
+html { color-scheme: dark; scrollbar-color: #5A5340 #131209; scrollbar-width: thin; }
+.bm-panel, .doc-body, textarea { scrollbar-color: #5A5340 transparent; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #131209; }
+.bm-panel::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #4A4632; border-radius: 9999px; border: 2px solid #131209; }
+::-webkit-scrollbar-thumb:hover { background: #E9B44C; }
+::-webkit-scrollbar-button { display: none; height: 0; width: 0; }
+::-webkit-scrollbar-corner { background: #131209; }
