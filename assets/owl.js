@@ -37,6 +37,7 @@
   function ctrl(a, b) { return [(a[0] + b[0]) / 2 - 140, Math.min(a[1], b[1]) - 150]; }
   function bez(a, c, b, t) { var u = 1 - t; return [u * u * a[0] + 2 * u * t * c[0] + t * t * b[0], u * u * a[1] + 2 * u * t * c[1] + t * t * b[1]]; }
   function fly(a, b, t0, t1, dur, ease, done) {
+    if (say) say.classList.remove('on');
     var c = ctrl(a, b), s = null;
     owl.classList.add('flying');
     function step(ts) {
@@ -52,11 +53,14 @@
   }
   var easeOut = function (k) { return 1 - Math.pow(1 - k, 3); };
   var easeIn = function (k) { return k * k * k; };
-  function land() { owl.classList.remove('flying'); owl.classList.add('landed'); setTimeout(function () { owl.classList.remove('landed'); }, 600); }
+  var say = document.querySelector('.owl-say');
+  function sayAt() { if (!say) return; var r = owl.getBoundingClientRect(), h = say.parentNode.getBoundingClientRect(); say.style.left = (r.left - h.left) + 'px'; say.style.top = (r.top - h.top) + 'px'; say.classList.toggle('to-r', r.left < 260); if (say.classList.contains('to-r')) say.style.left = (r.right - h.left) + 'px'; }
+  function land() { if (say) { sayAt(); setTimeout(function () { say.classList.add('on'); }, 250); }
+    owl.classList.remove('flying'); owl.classList.add('landed'); setTimeout(function () { owl.classList.remove('landed'); }, 600); }
 
   // Прилёт
   var st = read();
-  if (reduce) { place(here); }
+  if (reduce) { place(here); setTimeout(land, 50); }
   else if (st) {
     var a = st.from, b = st.to || here;
     var start = st.t ? bez(a, ctrl(a, b), b, st.t) : a;
@@ -101,3 +105,5 @@
     }, { passive: true });
   }
 })();
+
+window.addEventListener('resize', function () { var s = document.querySelector('.owl-say.on'); if (s) { var o = document.querySelector('.ill-svg .owl').getBoundingClientRect(), h = s.parentNode.getBoundingClientRect(); s.style.left = (o.left - h.left) + 'px'; s.style.top = (o.top - h.top) + 'px'; } });
