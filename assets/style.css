@@ -881,3 +881,99 @@ select.input { appearance: none; background-image: none; cursor: pointer; }
   .garland .b, .garland .lamp { animation: none; opacity: .8; }
   .hm-in { animation: none; transform: none; }
 }
+
+/* ================= Рисованная сцена внутренних страниц ================= */
+.phero.ill { min-height: 86svh; padding: 160px 0 var(--s-800); }
+.phero.ill::before, .phero.ill::after { display: none; }
+.ill-svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; display: block; }
+.ill-svg .lay { transition: transform 1s var(--ease); }
+.phero.ill .sub { color: #CFC9BC; }
+.owl-nav .pt { display: none; }
+
+/* небо и вода */
+.ill-svg .star { fill: #F3EFE6; opacity: .7; animation: tw var(--d) var(--ease) var(--o) infinite alternate; }
+.ill-svg .moon { animation: moonIn 2s var(--ease) both; }
+@keyframes moonIn { from { opacity: 0; transform: translateY(16px); } }
+.ill-svg .sh { fill: #3A3826; opacity: .5; animation: shim2 4s var(--ease) var(--o) infinite alternate; }
+.ill-svg .mr { fill: #F1DDAA; opacity: .25; animation: shim2 3s var(--ease) var(--o) infinite alternate; }
+@keyframes shim2 { from { opacity: .08; transform: translateX(-6px); } to { opacity: .45; transform: translateX(6px); } }
+
+/* светлячки */
+.ill-svg .ff { fill: #F6D184; opacity: 0; animation: ffly var(--d) var(--ease) var(--o) infinite; }
+@keyframes ffly { 0% { opacity: 0; transform: translate(0, 0); } 30% { opacity: .9; } 70% { opacity: .6; } 100% { opacity: 0; transform: translate(var(--x), var(--y)); } }
+
+/* домик и огонь */
+.ill-svg .win rect { fill: #F2B54E; animation: winOn 1.2s var(--ease) .6s both; }
+@keyframes winOn { 0% { opacity: 0; } 40% { opacity: 1; } 55% { opacity: .3; } 100% { opacity: 1; } }
+.ill-svg .win-glow { fill: #F2B54E; opacity: .14; filter: url(#softGlow); animation: winOn 1.2s var(--ease) .6s both; }
+.ill-svg .gb { fill: #FFD98A; opacity: 0; animation: bulbOn .6s var(--ease) calc(1s + var(--i) * 90ms) forwards, twinkle 3s var(--ease) calc(2.2s + var(--i) * 200ms) infinite alternate; }
+.ill-svg .trail { stroke: #3A3826; stroke-width: 3; }
+.ill-svg .fire-glow { fill: #F2913E; opacity: .2; filter: url(#softGlow); animation: glowP 2.2s var(--ease) infinite alternate; }
+@keyframes glowP { from { opacity: .14; } to { opacity: .26; } }
+.ill-svg .fl { transform-box: fill-box; transform-origin: 50% 100%; }
+.ill-svg .f1 { fill: #E9873A; animation: flame .7s var(--ease) infinite alternate; }
+.ill-svg .f2 { fill: #F6D184; animation: flame .5s var(--ease) .2s infinite alternate; }
+@keyframes flame { from { transform: scale(1, 1); } to { transform: scale(.88, 1.14); } }
+
+/* сова */
+.ill-svg .owl { fill: #0B0A05; }
+.ill-svg .owl path { stroke: #2C2A1D; stroke-width: 1; paint-order: stroke; }
+.ill-svg .owl-eyes circle { fill: #F2C14E; }
+.ill-svg .owl-eyes { transform-box: fill-box; transform-origin: center; animation: blink 5s var(--ease) infinite; }
+.ill-svg .owl-fly { display: none; }
+.ill-svg .owl.flying .owl-fly { display: inline; }
+.ill-svg .owl.flying .owl-sit { display: none; }
+.ill-svg .wing { transform-box: fill-box; animation: flap .22s var(--ease) infinite alternate; }
+.ill-svg .wl { transform-origin: 100% 60%; }
+.ill-svg .wr { transform-origin: 0% 60%; }
+@keyframes flap { from { transform: scaleY(1); } to { transform: scaleY(-.35); } }
+.ill-svg .owl-body { transform-box: fill-box; transform-origin: 50% 100%; }
+.ill-svg .owl.landed .owl-body { animation: landBob .6s var(--ease); }
+@keyframes landBob { 0% { transform: scale(1.1, .86); } 50% { transform: scale(.96, 1.05); } 100% { transform: none; } }
+
+@media (max-width: 767px) { .phero.ill { min-height: 88svh; } }
+@media (prefers-reduced-motion: reduce) { .ill-svg * { animation: none !important; } .ill-svg .ff { opacity: .6; } .ill-svg .gb { opacity: 1; } }
+
+/* ================= Главная: текст слева, фото в рамке справа ================= */
+.hero.hx { align-items: center; padding: 128px 0 var(--s-700); }
+.hero.hx::after { display: none; }
+.hero.hx::before { background: rgba(19, 18, 9, .62); }
+.hx-amb { position: absolute; inset: -10%; z-index: -2; opacity: .5; }
+.hx-amb img { width: 100%; height: 100%; object-fit: cover; filter: blur(70px) saturate(1.2); }
+.hx-grid { display: grid; gap: var(--s-700); grid-template-columns: 1fr auto; align-items: center; }
+.hx h1 { font-size: 48px; }
+@media (min-width: 768px) { .hx h1 { font-size: 60px; } }
+@media (min-width: 1280px) { .hx h1 { font-size: 72px; } }
+.hx-photo { position: relative; }
+.frame {
+  position: relative; overflow: hidden; border-radius: var(--r-3xl);
+  height: min(calc(100svh - 192px), 760px); aspect-ratio: 3 / 4;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, .45); border: 1px solid rgba(255,255,255,.08);
+}
+.frame .scene, .frame .kb-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scene .kb, .frame .kb-img { transform-box: fill-box; transform-origin: 50% 60%; animation: kb 24s var(--ease) infinite alternate; }
+@keyframes kb { from { transform: scale(1); } to { transform: scale(1.05); } }
+.hx .hero-card { position: absolute; left: -64px; bottom: var(--s-500); width: 300px; }
+
+/* Включение света по настоящим лампочкам */
+.scene .hole { transform-box: fill-box; transform-origin: center; transform: scale(0); animation: holeOn .7s var(--ease) calc(.6s + var(--i) * 36ms) forwards; }
+@keyframes holeOn { 0% { transform: scale(0); } 40% { transform: scale(1.15); } 55% { transform: scale(.35); } 100% { transform: scale(1); } }
+.scene .mask-all { animation: maskOff 1.6s var(--ease) 3.1s forwards; }
+@keyframes maskOff { 0% { opacity: 1; } 18% { opacity: .35; } 28% { opacity: .9; } 42% { opacity: .2; } 100% { opacity: 0; } }
+.scene .spark { fill: #FFF4DA; opacity: 0; mix-blend-mode: screen; animation: sparkTw var(--d) var(--ease) calc(5s + var(--o)) infinite alternate; }
+@keyframes sparkTw { from { opacity: 0; } to { opacity: .55; } }
+
+@media (max-width: 1023px) {
+  .hero.hx { align-items: flex-end; padding: 160px 0 var(--s-700); }
+  .hx-grid { grid-template-columns: 1fr; }
+  .hx-photo { position: absolute; inset: 0; z-index: -1; }
+  .hx-photo::after { content: ""; position: absolute; inset: 0; background: rgba(19, 18, 9, .5); }
+  .frame { height: 100%; width: 100%; aspect-ratio: auto; border-radius: 0; border: 0; box-shadow: none; }
+  .hx .hero-card { display: none; }
+  .hx-amb { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene .hole, .scene .mask-all, .scene .kb, .frame .kb-img { animation: none; }
+  .scene .mask-all { opacity: 0; }
+}
+@media (max-width: 767px) { .phero.ill::before { display: block; background: rgba(19, 18, 9, .35); z-index: 0; pointer-events: none; } .phero.ill .phero-in { position: relative; z-index: 1; } }
