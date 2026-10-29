@@ -1187,3 +1187,9 @@ select.input { appearance: none; background-image: none; cursor: pointer; }
 @media (max-width: 1599px) { .deco { transform: scale(.75); } .side-l { transform-origin: left center; } .side-r { transform-origin: right center; } .at-mid { transform: translateY(-50%) scale(.75); } }
 
 @media (max-width: 1599px) { .side-l.deco-branch { transform: scaleX(-.75) scaleY(.75); } }
+.deco-bones { width: 260px; }
+.deco-bones .fb { transform-box: fill-box; transform-origin: 50% 100%; animation: boneJig 6s var(--ease) infinite; }
+@keyframes boneJig { 0%, 62%, 100% { transform: none; } 66% { transform: translateX(-10px) rotate(-3deg); } 72% { transform: translateX(-4px); } }
+.deco-bones .cat-paw { animation: catPaw 6s var(--ease) infinite; }
+@keyframes catPaw { 0%, 50% { transform: translateX(70px); } 60% { transform: translateX(0); } 66% { transform: translateX(-6px); } 74% { transform: translateX(0); } 86%, 100% { transform: translateX(70px); } }
+.deco-bones .fly-d circle { animation: ffly 4s var(--ease) infinite; --x: 30px; --y: -14px; }
