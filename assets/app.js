@@ -36,7 +36,7 @@
     if (nav && !document.body.classList.contains('menu-open')) nav.classList.toggle('is-hidden', y > 240 && y > lastY);
     if (mbar) mbar.classList.toggle('on', y > window.innerHeight * 0.8 && !isNearBooking());
     var hm = $('.hero-media');
-    if (hm && !reduce && y < window.innerHeight * 1.2) hm.style.transform = 'translate3d(0,' + (y * 0.25).toFixed(1) + 'px,0)';
+    if (hm && !reduce && y < window.innerHeight * 1.2) hm.style.transform = 'translate3d(0,' + Math.round(y * 0.25) + 'px,0)';
     lastY = y; ticking = false;
   }
   function isNearBooking() { var b = $('#booking'); if (!b) return false; var r = b.getBoundingClientRect(); return r.top < window.innerHeight && r.bottom > 0; }

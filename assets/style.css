@@ -1077,3 +1077,9 @@ select.input { appearance: none; background-image: none; cursor: pointer; }
 @media (max-width: 1023px) { .hero-owl { width: 300px; } .ho-bubble { right: 72%; max-width: 170px; } }
 .hero.hfull .hero-media { inset: 0; }
 .hero-card .row b { white-space: nowrap; }
+
+/* Чёткий кадр: без зума и почти без затемнения */
+.hero.hfull .scene .kb { animation: none !important; transform: none !important; }
+.hero.hfull::before { background: rgba(19, 18, 9, .16); }
+.hero.hfull::after { height: 46%; background: rgba(19, 18, 9, .6); }
+.hero.hfull .scene { image-rendering: auto; }
