@@ -460,3 +460,15 @@
     c.addEventListener('mouseleave', function () { c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg'); setTimeout(function () { c.classList.remove('tilting'); }, 300); });
   });
 })();
+
+/* Чёткая версия главного фото для больших экранов: подгружается после открытия страницы */
+(function () {
+  var sc = document.querySelector('.hero .scene[data-hires]'); if (!sc) return;
+  var c = navigator.connection || {};
+  if (window.innerWidth < 1200 || c.saveData || /2g/.test(c.effectiveType || '')) return;
+  window.addEventListener('load', function () {
+    var src = sc.getAttribute('data-hires'), im = new Image();
+    im.onload = function () { Array.prototype.forEach.call(sc.querySelectorAll('image'), function (el) { el.setAttribute('href', src); }); };
+    im.src = src;
+  });
+})();
