@@ -1075,3 +1075,5 @@ select.input { appearance: none; background-image: none; cursor: pointer; }
 @media (max-width: 1023px) { .hero-owl { top: 96px; width: 280px; } .ho-bubble { max-width: 190px; font-size: 16px; line-height: 24px; right: 66%; } }
 .hero-card .row { gap: var(--s-100); }
 @media (max-width: 1023px) { .hero-owl { width: 300px; } .ho-bubble { right: 72%; max-width: 170px; } }
+.hero.hfull .hero-media { inset: 0; }
+.hero-card .row b { white-space: nowrap; }
