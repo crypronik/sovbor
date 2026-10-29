@@ -472,3 +472,69 @@
     im.src = src;
   });
 })();
+
+/* Сова на баннере: фразы, глаза за курсором и «нейроны» за мышкой */
+(function () {
+  var hero = document.querySelector('.hero.hfull'); if (!hero) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var bubble = hero.querySelector('.ho-bubble'), text = hero.querySelector('.ho-text');
+  var eyes = hero.querySelector('.eyes-track'), bird = hero.querySelector('.ho-bird');
+  var PHRASES = ['Отдохнём?', 'У вас нейронит? Пора к нам', 'У вас нервы? Пора к нам', 'Дайте отдых нейронам', 'Пора перезагрузиться'];
+  var pi = 0, lastSwap = 0, ready = false, travel = 0;
+  setTimeout(function () { ready = true; lastSwap = Date.now(); }, reduce ? 0 : 5800);
+  function swap() {
+    if (!ready || Date.now() - lastSwap < 4200) return;
+    lastSwap = Date.now(); pi = (pi + 1) % PHRASES.length;
+    bubble.style.animation = 'none'; void bubble.offsetWidth;
+    text.textContent = PHRASES[pi];
+    bubble.style.animation = reduce ? 'none' : 'bubblePop .8s var(--ease) forwards, bubbleFloat 4s var(--ease) .8s infinite alternate';
+  }
+  if (!fine) { setInterval(swap, 6500); }
+
+  // Нейросеть за курсором
+  var cv = hero.querySelector('.neuro'), ctx = cv && cv.getContext('2d'), parts = [], running = false, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function size() { if (!cv) return; var r = hero.getBoundingClientRect(); cv.width = r.width * dpr; cv.height = r.height * dpr; cv.style.width = r.width + 'px'; cv.style.height = r.height + 'px'; }
+  size(); window.addEventListener('resize', size);
+  function loop() {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    var now = performance.now();
+    parts = parts.filter(function (p) { return now - p.t < p.life; });
+    parts.forEach(function (p) { p.x += p.vx; p.y += p.vy; p.vx *= .97; p.vy *= .97; });
+    for (var i = 0; i < parts.length; i++) {
+      var a = parts[i], la = 1 - (now - a.t) / a.life;
+      for (var j = i + 1; j < parts.length; j++) {
+        var b = parts[j], dx = a.x - b.x, dy = a.y - b.y, d = dx * dx + dy * dy;
+        if (d < 9000) {
+          var lb = 1 - (now - b.t) / b.life;
+          ctx.strokeStyle = 'rgba(246,209,132,' + (Math.min(la, lb) * (1 - d / 9000) * .55).toFixed(3) + ')';
+          ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+      ctx.fillStyle = 'rgba(255,226,160,' + (la * .95).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 6.283); ctx.fill();
+      ctx.fillStyle = 'rgba(242,181,78,' + (la * .18).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(a.x, a.y, a.r * 4, 0, 6.283); ctx.fill();
+    }
+    if (parts.length) requestAnimationFrame(loop); else running = false;
+  }
+  var lx = null, ly = null;
+  if (fine && !reduce && ctx) hero.addEventListener('mousemove', function (e) {
+    var r = hero.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    var d = lx == null ? 0 : Math.hypot(x - lx, y - ly);
+    if (lx == null || d > 14) {
+      parts.push({ x: x + (Math.random() - .5) * 30, y: y + (Math.random() - .5) * 30, vx: (Math.random() - .5) * .8, vy: (Math.random() - .5) * .8, r: 1.2 + Math.random() * 1.6, t: performance.now(), life: 1400 + Math.random() * 1200 });
+      if (parts.length > 70) parts.shift();
+      lx = x; ly = y; travel += d;
+      if (travel > 1400) { travel = 0; swap(); }
+      if (!running) { running = true; requestAnimationFrame(loop); }
+    }
+    // глаза следят за курсором
+    if (eyes && bird) {
+      var br = bird.getBoundingClientRect(), cx = br.left + br.width / 2, cy = br.top + br.height / 3;
+      var ang = Math.atan2(e.clientY - cy, e.clientX - cx), k = Math.min(Math.hypot(e.clientX - cx, e.clientY - cy) / 300, 1);
+      eyes.style.transform = 'translate(' + (Math.cos(ang) * 2.6 * k).toFixed(2) + 'px,' + (Math.sin(ang) * 2.2 * k).toFixed(2) + 'px)';
+    }
+  });
+})();
