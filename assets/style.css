@@ -582,8 +582,8 @@ select.input { appearance: none; background-image: none; cursor: pointer; }
 .final { position: relative; overflow: hidden; border-radius: var(--r-3xl); min-height: 560px; display: flex; align-items: flex-end; isolation: isolate; }
 .final img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .final::before { content: ""; position: absolute; inset: 0; background: rgba(19,18,9,.58); z-index: -1; }
-.final .in { padding: var(--s-500); display: grid; gap: var(--s-300); max-width: 760px; }
-@media (min-width: 768px) { .final .in { padding: var(--s-800); } }
+.final > .in { padding: var(--s-500); display: grid; gap: var(--s-300); max-width: 760px; }
+@media (min-width: 768px) { .final > .in { padding: var(--s-800); } }
 .final h2 { font-size: 48px; line-height: 1; letter-spacing: -0.035em; }
 @media (min-width: 768px) { .final h2 { font-size: 72px; } }
 .final p { color: #D9D4C9; font-size: 18px; line-height: 28px; max-width: 540px; }
@@ -1083,3 +1083,45 @@ select.input { appearance: none; background-image: none; cursor: pointer; }
 .hero.hfull::before { background: rgba(19, 18, 9, .16); }
 .hero.hfull::after { height: 46%; background: rgba(19, 18, 9, .6); }
 .hero.hfull .scene { image-rendering: auto; }
+
+/* ================= Рисованная карта в финальном блоке ================= */
+.map-final { background: #1A2414; align-items: stretch; }
+.map-final::before { background: none; }
+.mapill { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
+.map-final .map-card { position: relative; margin: var(--s-300); padding: var(--s-500); max-width: 520px; align-self: flex-end;
+  background: rgba(19, 18, 9, .78); border: 1px solid rgba(255,255,255,.08); border-radius: var(--r-2xl);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.map-final h2 { font-size: 48px; }
+.map-final .mlabel { fill: #F3EFE6; font: 600 18px Manrope, sans-serif; letter-spacing: .02em; paint-order: stroke; stroke: #131209; stroke-width: 4px; }
+.map-final .mlabel.lake-l { fill: #CFE2EC; font-size: 20px; }
+.map-final .mlabel.small { font-size: 13px; fill: #CFC9BC; }
+.mapill .rip { animation: ripM 4s var(--ease) var(--o) infinite alternate; }
+@keyframes ripM { from { opacity: .1; transform: translateX(-4px); } to { opacity: .8; transform: translateX(4px); } }
+.mapill .sheen { animation: sheen 9s var(--ease) infinite alternate; }
+@keyframes sheen { from { transform: translateX(-40px) rotate(20deg); } to { transform: translateX(220px) rotate(20deg); } }
+.mapill .trail { animation: trail 1.6s linear infinite; }
+@keyframes trail { to { stroke-dashoffset: -24; } }
+.mapill .pin-ring { transform-box: fill-box; transform-origin: center; animation: pinR 2.2s var(--ease) infinite; }
+@keyframes pinR { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(2.4); opacity: 0; } }
+.mapill .pin-glow { animation: glowP 2.4s var(--ease) infinite alternate; opacity: .35; }
+.mapill .tr1 { animation: sway 7s var(--ease) infinite alternate; }
+.mapill .tr2 { animation: sway 5s var(--ease) infinite alternate-reverse; }
+@keyframes sway { to { transform: translate(1.5px, -1px); } }
+.mapill .sup-dot { offset-path: path('M690 420C720 380 700 320 760 300S820 380 780 440 700 450 690 420Z'); animation: supRoute 26s linear infinite; }
+@keyframes supRoute { to { offset-distance: 100%; } }
+.mapill .map-owl { offset-path: path('M150 700C350 520 520 520 600 380S900 120 1250 160'); offset-rotate: 0deg; animation: owlMap 14s var(--ease) infinite; }
+.mapill .map-owl path { transform-box: fill-box; transform-origin: center; animation: flap .3s var(--ease) infinite alternate; }
+@keyframes owlMap { 0% { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } 60% { opacity: 1; offset-distance: 100%; } 61%, 100% { opacity: 0; offset-distance: 100%; } }
+@media (max-width: 767px) { .map-final { min-height: 640px; } .map-final .map-card { margin: var(--s-200); padding: var(--s-300); } .map-final h2 { font-size: 36px; } }
+@media (prefers-reduced-motion: reduce) { .mapill * { animation: none !important; } }
+
+.map-final .map-card { display: grid; gap: var(--s-300); }
+.map-final .map-card p { color: #D9D4C9; font-size: 18px; line-height: 28px; }
+@media (max-width: 767px) { .map-final { align-items: flex-end; } }
+
+.map-final h2 { line-height: 1; }
+@media (max-width: 767px) {
+  .map-final { display: block; min-height: 0; background: var(--bg-2); }
+  .map-final .mapill { position: relative; height: 340px; z-index: 0; display: block; }
+  .map-final .map-card { margin: 0; border: 0; border-radius: 0; background: var(--bg-2); backdrop-filter: none; }
+}

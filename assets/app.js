@@ -538,3 +538,12 @@
     }
   });
 })();
+
+/* Карта: на телефоне показываем участок и озеро крупнее */
+(function () {
+  document.querySelectorAll('.mapill[data-vb-m]').forEach(function (m) {
+    var full = m.getAttribute('viewBox');
+    function fit() { m.setAttribute('viewBox', window.innerWidth < 768 ? m.getAttribute('data-vb-m') : full); }
+    fit(); window.addEventListener('resize', fit);
+  });
+})();
