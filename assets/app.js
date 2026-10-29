@@ -600,3 +600,28 @@
   }, true);
   if (location.hash === '#booking') { history.replaceState(null, '', location.pathname); setTimeout(function () { open(null); }, 300); }
 })();
+
+/* Адресная строка браузера перекрашивается в цвет раздела под ней */
+(function () {
+  var meta = document.querySelector('meta[name="theme-color"]'); if (!meta) return;
+  var cur = '', tk = false;
+  function bgOf(el) {
+    for (; el && el !== document.documentElement; el = el.parentElement) {
+      var t = el.getAttribute && el.getAttribute('data-theme'); if (t) return t;
+      var c = getComputedStyle(el).backgroundColor;
+      if (c && c !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(c)) return c;
+    }
+    return '#131209';
+  }
+  function update() {
+    tk = false;
+    var els = document.elementsFromPoint(innerWidth / 2, 4), el = null;
+    for (var i = 0; i < els.length; i++) { if (!els[i].closest('.nav, .progress, .mpanel, .toast, .pt, .cur, .cur-ring')) { el = els[i]; break; } }
+    if (document.body.classList.contains('bm-open') || document.body.classList.contains('menu-open')) el = null;
+    if (el) el = el.closest('[data-theme], section, footer') || el;
+    var c = el ? bgOf(el) : '#131209';
+    if (c !== cur) { cur = c; meta.setAttribute('content', c); }
+  }
+  addEventListener('scroll', function () { if (!tk) { tk = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('load', update); update();
+})();
