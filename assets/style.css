@@ -1224,3 +1224,11 @@ html { color-scheme: dark; scrollbar-color: #5A5340 #131209; scrollbar-width: th
 ::-webkit-scrollbar-thumb:hover { background: #E9B44C; }
 ::-webkit-scrollbar-button { display: none; height: 0; width: 0; }
 ::-webkit-scrollbar-corner { background: #131209; }
+.deco-hedgehog { width: 240px; }
+.deco-hedgehog .hh { animation: hhWalk 12s var(--ease) infinite; }
+@keyframes hhWalk { 0%, 100% { transform: translateX(-30px); } 45%, 55% { transform: translateX(10px); } }
+.deco-hedgehog .legs path { transform-box: fill-box; transform-origin: 50% 0; animation: hhLeg .35s var(--ease) infinite alternate; }
+.deco-hedgehog .legs path:nth-child(even) { animation-direction: alternate-reverse; }
+@keyframes hhLeg { from { transform: rotate(-14deg); } to { transform: rotate(14deg); } }
+.deco-hedgehog .nose { transform-box: fill-box; transform-origin: center; animation: sniff 1.4s var(--ease) infinite; }
+@keyframes sniff { 0%, 60%, 100% { transform: none; } 70% { transform: translate(2px, -1px) scale(1.15); } 80% { transform: none; } 90% { transform: translate(2px, -1px) scale(1.15); } }
