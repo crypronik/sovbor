@@ -547,3 +547,12 @@
     fit(); window.addEventListener('resize', fit);
   });
 })();
+
+/* Вкладки «Как проехать» перестраивают маршрут на карте */
+(function () {
+  document.querySelectorAll('.loc [data-route]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.closest('.loc').querySelector('.map iframe'); if (f && f.src !== b.dataset.route) f.src = b.dataset.route;
+    });
+  });
+})();

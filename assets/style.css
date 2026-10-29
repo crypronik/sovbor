@@ -1130,3 +1130,6 @@ select.input { appearance: none; background-image: none; cursor: pointer; }
 .ht-mode { display: flex; align-items: center; gap: var(--s-75); font-size: 14px; line-height: 20px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin: var(--s-200) 0 var(--s-100); }
 .ht-mode i { font-size: 18px; }
 .howto .route { list-style: none; padding: 0; margin: 0; }
+.map-col { display: grid; gap: var(--s-200); grid-template-rows: auto 1fr; min-width: 0; }
+.map-col .tabs { justify-self: start; }
+.map-col .map { min-height: 440px; }

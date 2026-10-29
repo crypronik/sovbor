@@ -68,17 +68,12 @@
 </section><section class="section" id="map" aria-label="Как добраться">
   <div class="wrap">
     
-    <div class="loc">
+    <div class="loc" data-tabs>
       <div class="card addr rv">
         <div class="kv"><small>Адрес</small><span>Московская область, г.о. Лосино‑Петровский, д. Митянино, территория Приозерная, ул. Лесная, участок 27</span></div>
         <div class="kv"><small>Ориентир для навигатора</small><span>«Аква Виктория Вилладж»</span></div>
         <div class="kv"><small>Координаты</small><button class="copy" type="button" data-copy="55.899687, 38.166592" data-copy-msg="Координаты скопированы">55.899687, 38.166592 <i class="ph ph-copy"></i></button></div>
-        <div class="howto" data-tabs>
-          <div class="tabs" role="tablist" aria-label="Откуда едете">
-            <button role="tab" id="ht-0" aria-controls="hp-0" aria-selected="true" tabindex="0">От м. Щёлковская</button>
-            <button role="tab" id="ht-1" aria-controls="hp-1" aria-selected="false" tabindex="-1">От Щёлково</button>
-            <button role="tab" id="ht-2" aria-controls="hp-2" aria-selected="false" tabindex="-1">От центра Москвы</button>
-          </div>
+        <div class="howto">
           <div class="panel on" role="tabpanel" id="hp-0" aria-labelledby="ht-0">
             <p class="ht-mode"><i class="ph ph-car-simple"></i>На машине</p>
             <ol class="route"><li>От метро выезжайте на Щёлковское шоссе и двигайтесь из Москвы через МКАД</li><li>Около 25 км по шоссе в сторону Свердловского и деревни Митянино</li><li>В навигаторе ставьте «Аква Виктория Вилладж» или координаты участка</li></ol>
@@ -101,7 +96,13 @@
         </div>
         <a class="btn btn-primary" href="https://yandex.ru/maps/?rtext=~55.899687%2C38.166592&rtt=auto" target="_blank" rel="noopener">Построить маршрут <i class="ph ph-arrow-up-right"></i></a>
       </div>
-      <div class="map rv rv-d1"><iframe src="https://yandex.ru/map-widget/v1/?ll=38.166592%2C55.899687&z=13&pt=38.166592%2C55.899687%2Cpm2orm" title="Совиный Бор на Яндекс Картах" loading="lazy" allowfullscreen></iframe></div>
+      <div class="map-col rv rv-d1">
+        <div class="tabs" role="tablist" aria-label="Откуда едете">
+          <button role="tab" id="ht-0" data-route="https://yandex.ru/map-widget/v1/?rtext=55.8099%2C37.7987~55.899687%2C38.166592&rtt=auto" aria-controls="hp-0" aria-selected="true" tabindex="0">От м. Щёлковская</button>
+          <button role="tab" id="ht-1" data-route="https://yandex.ru/map-widget/v1/?rtext=55.9216%2C37.9856~55.899687%2C38.166592&rtt=auto" aria-controls="hp-1" aria-selected="false" tabindex="-1">От Щёлково</button>
+          <button role="tab" id="ht-2" data-route="https://yandex.ru/map-widget/v1/?rtext=55.7520%2C37.6175~55.899687%2C38.166592&rtt=auto" aria-controls="hp-2" aria-selected="false" tabindex="-1">От центра Москвы</button>
+        </div>
+        <div class="map"><iframe src="https://yandex.ru/map-widget/v1/?ll=38.166592%2C55.899687&z=13&pt=38.166592%2C55.899687%2Cpm2orm" title="Совиный Бор на Яндекс Картах" loading="lazy" allowfullscreen></iframe></div></div>
     </div>
   </div>
 </section><section class="section" aria-label="Главные правила">
