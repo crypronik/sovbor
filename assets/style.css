@@ -1193,3 +1193,23 @@ select.input { appearance: none; background-image: none; cursor: pointer; }
 .deco-bones .cat-paw { animation: catPaw 6s var(--ease) infinite; }
 @keyframes catPaw { 0%, 50% { transform: translateX(70px); } 60% { transform: translateX(0); } 66% { transform: translateX(-6px); } 74% { transform: translateX(0); } 86%, 100% { transform: translateX(70px); } }
 .deco-bones .fly-d circle { animation: ffly 4s var(--ease) infinite; --x: 30px; --y: -14px; }
+
+/* Всплывающее окно бронирования */
+.bmodal { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; padding: var(--s-300);
+  background: rgba(8, 8, 4, .72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  opacity: 0; pointer-events: none; transition: opacity .45s var(--ease); }
+.bmodal.on { opacity: 1; pointer-events: auto; }
+.bm-panel { width: min(1180px, 100%); max-height: calc(100svh - 48px); overflow: auto; overscroll-behavior: contain;
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-3xl); padding: var(--s-300);
+  transform: translateY(24px) scale(.98); transition: transform .6s var(--ease); box-shadow: 0 40px 120px rgba(0,0,0,.6); }
+.bmodal.on .bm-panel { transform: none; }
+.bm-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-200); margin-bottom: var(--s-300); }
+.bm-head b { display: block; margin-top: var(--s-75); font-size: 24px; line-height: 32px; font-weight: 700; }
+.bmodal .sum { position: static; }
+body.bm-open { overflow: hidden; }
+body.bm-open .mbar, body.bm-open .nav { opacity: 0; pointer-events: none; }
+@media (max-width: 767px) { .bmodal { padding: 0; } .bm-panel { max-height: 100svh; height: 100svh; border-radius: 0; padding: var(--s-200); } .bm-head b { font-size: 18px; line-height: 28px; } }
+.loc > * { min-width: 0; }
+.map-col .tabs { max-width: 100%; }
+html, body { overflow-x: clip; }
+.map-col { grid-template-columns: minmax(0, 1fr); }

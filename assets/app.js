@@ -564,3 +564,39 @@
   var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .2 });
   d.forEach(function (e) { io.observe(e); });
 })();
+
+/* «Выбрать даты» открывает календарь во всплывающем окне */
+(function () {
+  var sec = document.getElementById('booking'); if (!sec) return;
+  var book = sec.querySelector('.book'); if (!book) return;
+  var home = book.parentNode, anchor = document.createComment('book');
+  home.insertBefore(anchor, book);
+  var m = document.createElement('div');
+  m.className = 'bmodal'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true'); m.setAttribute('aria-label', 'Выбор дат и бронирование');
+  m.innerHTML = '<div class="bm-panel"><div class="bm-head"><div><span class="eyebrow">Бронирование</span><b>Выберите даты, цена посчитается сразу</b></div><button class="icon-btn bm-x" type="button" aria-label="Закрыть"><i class="ph ph-x"></i></button></div><div class="bm-body"></div></div>';
+  document.body.appendChild(m);
+  var body = m.querySelector('.bm-body'), last = null;
+  function open(from) {
+    last = from; body.appendChild(book);
+    book.querySelectorAll('.rv').forEach(function (e) { e.classList.add('in'); });
+    m.classList.add('on'); document.body.classList.add('bm-open');
+    window.dispatchEvent(new Event('resize'));
+    setTimeout(function () { var d = book.querySelector('.cal-months button.d:not([disabled])'); (d || m.querySelector('.bm-x')).focus(); }, 350);
+  }
+  function close() {
+    m.classList.remove('on'); document.body.classList.remove('bm-open');
+    setTimeout(function () { if (!m.classList.contains('on')) { home.insertBefore(book, anchor.nextSibling); window.dispatchEvent(new Event('resize')); } }, 450);
+    if (last) last.focus();
+  }
+  m.querySelector('.bm-x').addEventListener('click', close);
+  m.addEventListener('click', function (e) { if (e.target === m) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && m.classList.contains('on')) close(); });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href*="#booking"]'); if (!a || a.closest('.bmodal')) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    if (document.body.classList.contains('menu-open')) { var bg = document.querySelector('.burger'); if (bg) bg.click(); }
+    open(a);
+  }, true);
+  if (location.hash === '#booking') { history.replaceState(null, '', location.pathname); setTimeout(function () { open(null); }, 300); }
+})();
