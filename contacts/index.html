@@ -73,11 +73,32 @@
         <div class="kv"><small>Адрес</small><span>Московская область, г.о. Лосино‑Петровский, д. Митянино, территория Приозерная, ул. Лесная, участок 27</span></div>
         <div class="kv"><small>Ориентир для навигатора</small><span>«Аква Виктория Вилладж»</span></div>
         <div class="kv"><small>Координаты</small><button class="copy" type="button" data-copy="55.899687, 38.166592" data-copy-msg="Координаты скопированы">55.899687, 38.166592 <i class="ph ph-copy"></i></button></div>
-        <ol class="route" style="list-style:none;padding:0;margin:0">
-          <li>Выезжайте с МКАД на Щёлковское шоссе</li>
-          <li>Двигайтесь в сторону деревни Митянино, около 25 км</li>
-          <li>Скорость по посёлку не больше 10 км/ч, место парковки подскажет администратор</li>
-        </ol>
+        <div class="howto" data-tabs>
+          <div class="tabs" role="tablist" aria-label="Откуда едете">
+            <button role="tab" id="ht-0" aria-controls="hp-0" aria-selected="true" tabindex="0">От м. Щёлковская</button>
+            <button role="tab" id="ht-1" aria-controls="hp-1" aria-selected="false" tabindex="-1">От Щёлково</button>
+            <button role="tab" id="ht-2" aria-controls="hp-2" aria-selected="false" tabindex="-1">От центра Москвы</button>
+          </div>
+          <div class="panel on" role="tabpanel" id="hp-0" aria-labelledby="ht-0">
+            <p class="ht-mode"><i class="ph ph-car-simple"></i>На машине</p>
+            <ol class="route"><li>От метро выезжайте на Щёлковское шоссе и двигайтесь из Москвы через МКАД</li><li>Около 25 км по шоссе в сторону Свердловского и деревни Митянино</li><li>В навигаторе ставьте «Аква Виктория Вилладж» или координаты участка</li></ol>
+            <p class="ht-mode"><i class="ph ph-bus"></i>На автобусе</p>
+            <ol class="route"><li>От автостанции у метро «Щёлковская» идут автобус № 362 до станции Монино и маршрутка № 506к до Лосино‑Петровского, обе через Свердловский</li><li>Выходите в Свердловском. Ближайшую остановку и путь до калитки подскажет администратор</li></ol>
+          </div>
+          <div class="panel" role="tabpanel" id="hp-1" aria-labelledby="ht-1">
+            <p class="ht-mode"><i class="ph ph-car-simple"></i>На машине</p>
+            <ol class="route"><li>Из Щёлково выезжайте на Монинское шоссе в сторону Свердловского</li><li>После Свердловского поворачивайте к деревне Митянино</li><li>В навигаторе ставьте «Аква Виктория Вилладж» или координаты участка</li></ol>
+            <p class="ht-mode"><i class="ph ph-bus"></i>На автобусе</p>
+            <ol class="route"><li>Автобус № 26 Щёлково (мкр. Заречный) — станция Монино идёт через Свердловский</li><li>Выходите в Свердловском. Ближайшую остановку и путь до калитки подскажет администратор</li></ol>
+          </div>
+          <div class="panel" role="tabpanel" id="hp-2" aria-labelledby="ht-2">
+            <p class="ht-mode"><i class="ph ph-car-simple"></i>На машине</p>
+            <ol class="route"><li>Из центра двигайтесь на северо‑восток к Щёлковскому шоссе</li><li>За МКАД ещё около 25 км по Щёлковскому шоссе</li><li>Дальше на Свердловский и Митянино, в навигаторе «Аква Виктория Вилладж»</li></ol>
+            <p class="ht-mode"><i class="ph ph-train-simple"></i>На метро и автобусе</p>
+            <ol class="route"><li>По синей ветке до станции «Щёлковская»</li><li>Дальше автобус № 362 или маршрутка № 506к до Свердловского</li></ol>
+          </div>
+          <p class="t-xs" style="color:var(--dim);margin-top:16px">Скорость по посёлку не больше 10 км/ч. Место парковки уточните у администратора перед приездом. Расписание автобусов проверяйте в Яндекс Расписаниях.</p>
+        </div>
         <a class="btn btn-primary" href="https://yandex.ru/maps/?rtext=~55.899687%2C38.166592&rtt=auto" target="_blank" rel="noopener">Построить маршрут <i class="ph ph-arrow-up-right"></i></a>
       </div>
       <div class="map rv rv-d1"><iframe src="https://yandex.ru/map-widget/v1/?ll=38.166592%2C55.899687&z=13&pt=38.166592%2C55.899687%2Cpm2orm" title="Совиный Бор на Яндекс Картах" loading="lazy" allowfullscreen></iframe></div>

@@ -1125,3 +1125,8 @@ select.input { appearance: none; background-image: none; cursor: pointer; }
   .map-final .mapill { position: relative; height: 340px; z-index: 0; display: block; }
   .map-final .map-card { margin: 0; border: 0; border-radius: 0; background: var(--bg-2); backdrop-filter: none; }
 }
+.howto .tabs { margin-bottom: var(--s-100); }
+.howto .panel { margin-top: var(--s-200); }
+.ht-mode { display: flex; align-items: center; gap: var(--s-75); font-size: 14px; line-height: 20px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin: var(--s-200) 0 var(--s-100); }
+.ht-mode i { font-size: 18px; }
+.howto .route { list-style: none; padding: 0; margin: 0; }
