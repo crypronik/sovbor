@@ -480,7 +480,7 @@
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var bubble = hero.querySelector('.ho-bubble'), text = hero.querySelector('.ho-text');
   var eyes = hero.querySelector('.eyes-track'), bird = hero.querySelector('.ho-bird');
-  var PHRASES = ['Отдохнём?', 'У вас нейронит? Пора к нам', 'У вас нервы? Пора к нам', 'Дайте отдых нейронам', 'Всего-то 38 км от Кремля', 'Пора перезагрузиться'];
+  var PHRASES = ['Отдохнём?', 'У вас нейронит? Пора к нам', 'У вас нервы? Пора к нам', 'Дайте отдых нейронам', 'Всего-то 38 км от Кремля', 'У нас растёт лечебная берёза', 'Пора перезагрузиться'];
   var pi = 0, lastSwap = 0, ready = false, travel = 0;
   setTimeout(function () { ready = true; lastSwap = Date.now(); }, reduce ? 0 : 5800);
   function swap() {
