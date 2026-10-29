@@ -1307,3 +1307,11 @@ html { color-scheme: dark; scrollbar-color: #5A5340 #131209; scrollbar-width: th
   .bk-form .row2 { grid-template-columns: 1fr 1fr; gap: var(--s-100); }
   .bk-form .row2 .field label em { display: none; }
 }
+/* вариант: итог под календарём, форма по центру справа */
+.bk-cal .bk-strip { margin-top: var(--s-300); padding: 0; border: 0; grid-template-columns: auto 1fr; }
+.bk-cal .bk-strip .sum-dates { grid-template-columns: 1fr; }
+.bk-cal .bk-strip .hint.budni { display: flex; }
+.bk-cal .cal-legend { margin-top: var(--s-200); padding-top: 0; }
+.bk-form { justify-content: center; }
+@media (max-width: 639px) { .bk-cal .bk-strip { grid-template-columns: 1fr; } .bk-cal .bk-strip .sum-dates { grid-template-columns: 1fr 1fr; } }
+.bk1 { gap: 0; }
