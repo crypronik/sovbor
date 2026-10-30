@@ -54,7 +54,7 @@
   var easeOut = function (k) { return 1 - Math.pow(1 - k, 3); };
   var easeIn = function (k) { return k * k * k; };
   var say = document.querySelector('.owl-say');
-  function sayAt() { if (!say) return; var r = owl.getBoundingClientRect(), h = say.parentNode.getBoundingClientRect(); say.style.left = (r.left - h.left) + 'px'; say.style.top = (r.top - h.top) + 'px'; say.classList.toggle('to-r', r.left < 260); if (say.classList.contains('to-r')) say.style.left = (r.right - h.left) + 'px'; }
+  function sayAt() { if (!say) return; var r = owl.getBoundingClientRect(), h = say.parentNode.getBoundingClientRect(); say.style.left = (r.left - h.left) + 'px'; say.style.top = (r.top - h.top) + 'px'; say.classList.toggle('to-r', r.left < 260); say.classList.toggle('below', r.top - h.top < 150); if (say.classList.contains('below')) say.style.top = (r.bottom - h.top) + 'px'; if (say.classList.contains('to-r')) say.style.left = (r.right - h.left) + 'px'; }
   function land() { if (say) { sayAt(); setTimeout(function () { say.classList.add('on'); }, 250); }
     owl.classList.remove('flying'); owl.classList.add('landed'); setTimeout(function () { owl.classList.remove('landed'); }, 600); }
 

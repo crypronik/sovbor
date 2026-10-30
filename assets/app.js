@@ -311,10 +311,11 @@
       $('[data-out]').textContent = end ? fmt(end) : (start ? 'выберите' : '—');
       $('#f-in').value = start ? key(start) : ''; $('#f-out').value = end ? key(end) : '';
       if (!c) { if ($('[data-sum-note]')) $('[data-sum-note]').innerHTML = ''; sumEl.innerHTML = '<div class="empty-sum"><i class="ph ph-calendar-dots"></i><span class="t-sm">' + (start ? 'Теперь выберите день выезда. Он в стоимость не входит.' : 'Нажмите день заезда, затем день выезда. Цена посчитается сразу.') + '</span></div>'; return; }
-      var promo = promoBox && promoBox.checked;
+      var code = promoBox ? promoBox.value.trim().toUpperCase() : ''; var promo = code === 'SOVA5';
+      var pm = document.querySelector('.promo-msg'); if (pm) { pm.textContent = !code ? '' : promo ? 'Скидка 5% применена' : 'Код проверит администратор'; pm.classList.toggle('ok-c', promo); }
       var h = '<div class="lines">';
-      if (c.wd) h += '<div><span>' + c.wd + ' ' + plural(c.wd, 'ночь', 'ночи', 'ночей') + ' × ' + rub(PRICE_WEEKDAY) + ' <span class="t-xs" style="color:var(--dim)">пн–чт</span></span><b>' + rub(c.wd * PRICE_WEEKDAY) + '</b></div>';
-      if (c.we) h += '<div><span>' + c.we + ' ' + plural(c.we, 'ночь', 'ночи', 'ночей') + ' × ' + rub(PRICE_WEEKEND) + ' <span class="t-xs" style="color:var(--dim)">пт–вс</span></span><b>' + rub(c.we * PRICE_WEEKEND) + '</b></div>';
+      if (c.wd) h += '<div><span>' + c.wd + ' ' + plural(c.wd, 'ночь', 'ночи', 'ночей') + ' × ' + rub(PRICE_WEEKDAY) + ' <span class="t-xs" style="color:var(--dim);margin-left:4px">пн–чт</span></span><b>' + rub(c.wd * PRICE_WEEKDAY) + '</b></div>';
+      if (c.we) h += '<div><span>' + c.we + ' ' + plural(c.we, 'ночь', 'ночи', 'ночей') + ' × ' + rub(PRICE_WEEKEND) + ' <span class="t-xs" style="color:var(--dim);margin-left:4px">пт–вс</span></span><b>' + rub(c.we * PRICE_WEEKEND) + '</b></div>';
       var total = c.total;
       if (promo) { var disc = Math.round(total * 0.05); total -= disc; h += '<div><span>Промокод SOVA5, 5%</span><b style="color:var(--moss)">−' + rub(disc) + '</b></div>'; }
       h += '</div><div class="total"><span class="muted">Итого за ' + c.n + ' ' + plural(c.n, 'ночь', 'ночи', 'ночей') + '</span><b>' + rub(total) + '</b></div>';
@@ -329,7 +330,7 @@
       } else sumEl.innerHTML = h;
       $('#f-total').value = total;
     }
-    if (promoBox) promoBox.addEventListener('change', summary);
+    if (promoBox) promoBox.addEventListener('input', summary);
     render(); summary();
 
     var bform = $('[data-book-form]');
@@ -629,4 +630,49 @@
   }
   addEventListener('scroll', function () { if (!tk) { tk = true; requestAnimationFrame(update); } }, { passive: true });
   addEventListener('load', update); update();
+})();
+
+
+/* Промокод: поле по кнопке */
+(function () {
+  document.querySelectorAll('.promo-toggle').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.nextElementSibling; f.hidden = !f.hidden; b.setAttribute('aria-expanded', String(!f.hidden));
+      if (!f.hidden) f.querySelector('input').focus();
+    });
+  });
+})();
+
+/* Светлая и тёмная тема */
+(function () {
+  var root = document.documentElement;
+  function set(l) {
+    root.classList.add('theme-anim'); root.classList.toggle('light', l);
+    document.querySelectorAll('.theme-sw').forEach(function (b) { b.setAttribute('aria-checked', String(l)); });
+    try { localStorage.setItem('theme', l ? 'light' : 'dark'); } catch (e) {}
+    setTimeout(function () { root.classList.remove('theme-anim'); }, 600);
+    window.dispatchEvent(new Event('scroll'));
+  }
+  document.querySelectorAll('.theme-sw').forEach(function (b) {
+    b.setAttribute('aria-checked', String(root.classList.contains('light')));
+    b.addEventListener('click', function () { set(!root.classList.contains('light')); });
+  });
+})();
+
+/* Чат в Telegram */
+(function () {
+  var w = document.querySelector('.tgchat'); if (!w) return;
+  var url = w.getAttribute('data-tg'), panel = w.querySelector('.tc-panel'), fab = w.querySelector('.tc-fab'), ta = w.querySelector('textarea');
+  function toggle(open) { panel.hidden = !open; w.classList.toggle('open', open); fab.setAttribute('aria-expanded', String(open)); if (open) setTimeout(function () { ta.focus(); }, 200); }
+  fab.addEventListener('click', function () { toggle(panel.hidden); });
+  w.querySelector('.tc-x').addEventListener('click', function () { toggle(false); fab.focus(); });
+  w.querySelectorAll('.tc-chips button').forEach(function (b) { b.addEventListener('click', function () { ta.value = b.textContent; ta.focus(); }); });
+  w.querySelector('.tc-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var t = ta.value.trim(); if (!t) { ta.focus(); return; }
+    window.open(url + '?text=' + encodeURIComponent('Здравствуйте! ' + t), '_blank', 'noopener');
+    ta.value = ''; toggle(false);
+  });
+  ta.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); w.querySelector('.tc-form').requestSubmit(); } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) toggle(false); });
 })();

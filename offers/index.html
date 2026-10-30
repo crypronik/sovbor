@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{if(localStorage.getItem("theme")==="light")document.documentElement.classList.add("light")}catch(e){}</script>
 <script>try{var o=JSON.parse(sessionStorage.getItem("owl")||"null");if(o&&Date.now()-o.ts<6000&&document.documentElement.hasAttribute("data-ill"))document.documentElement.classList.add("owl-nav")}catch(e){}</script>
 <title>Акции и скидки | Совиный Бор</title>
 <meta name="description" content="Промокод SOVA5 на 5%, скидка 10% на день рождения и акция «2 = 3» в будни. Акции можно сочетать.">
@@ -31,13 +32,18 @@
 <nav class="nav" aria-label="Основное меню">
   <a class="brand" href="../index.html" aria-label="Совиный Бор, на главную"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="16" fill="#E9B44C"/><path d="M9 11.5 12 9l4 2 4-2 3 2.5V19a7 7 0 0 1-14 0v-7.5Z" fill="#131209"/><circle cx="13" cy="15" r="2.4" fill="#E9B44C"/><circle cx="19" cy="15" r="2.4" fill="#E9B44C"/><circle cx="13" cy="15" r="1" fill="#131209"/><circle cx="19" cy="15" r="1" fill="#131209"/><path d="m16 17.2-1.1 1.6h2.2L16 17.2Z" fill="#E9B44C"/></svg><span>Совиный Бор</span></a>
   <div class="nav-links"><a href="../domik/index.html">Домик</a><a href="../territory/index.html">Территория</a><a href="../booking/index.html">Цены и бронь</a><a href="../offers/index.html" aria-current="page">Акции</a><a href="../rules/index.html">Правила</a><a href="../contacts/index.html">Как добраться</a></div>
-  <a class="btn btn-primary btn-sm" href="../booking/index.html#booking">Выбрать даты</a>
-  <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mpanel"><span></span><span></span></button>
+  <div class="nav-act">
+    <a class="tg-btn" href="https://t.me/IlyaMKV" target="_blank" rel="noopener" aria-label="Мы в Telegram"><i class="ph ph-telegram-logo"></i><span>Мы в ТГ</span></a>
+    <button class="theme-sw" type="button" role="switch" aria-checked="false" aria-label="Светлая тема"><span class="ts-knob"><i class="ph ph-moon"></i><i class="ph ph-sun"></i></span></button>
+    <a class="btn btn-primary btn-sm" href="../booking/index.html#booking">Выбрать даты</a>
+  </div>
+  <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mpanel"><span></span><span></span><span></span></button>
 </nav>
 <div class="mpanel" id="mpanel">
   <ul><li><a href="../domik/index.html"><span class="lbl">Домик</span><i class="ph ph-arrow-up-right"></i></a></li><li><a href="../territory/index.html"><span class="lbl">Территория</span><i class="ph ph-arrow-up-right"></i></a></li><li><a href="../booking/index.html"><span class="lbl">Цены и бронь</span><i class="ph ph-arrow-up-right"></i></a></li><li><a href="../offers/index.html" aria-current="page"><span class="lbl">Акции</span><i class="ph ph-arrow-up-right"></i></a></li><li><a href="../rules/index.html"><span class="lbl">Правила</span><i class="ph ph-arrow-up-right"></i></a></li><li><a href="../contacts/index.html"><span class="lbl">Как добраться</span><i class="ph ph-arrow-up-right"></i></a></li></ul>
   <div class="mpanel-foot">
     <a class="btn btn-primary" href="../booking/index.html#booking">Выбрать даты <i class="ph ph-arrow-right"></i></a>
+    <div style="display:flex;gap:12px;align-items:center"><a class="btn btn-ghost" href="https://t.me/IlyaMKV" target="_blank" rel="noopener"><i class="ph ph-telegram-logo"></i> Мы в ТГ</a><button class="theme-sw" type="button" role="switch" aria-checked="false" aria-label="Светлая тема"><span class="ts-knob"><i class="ph ph-moon"></i><i class="ph ph-sun"></i></span></button></div>
     <span class="t-sm muted">Глэмпинг у озера, 25 км от МКАД</span>
   </div>
 </div>
@@ -128,7 +134,7 @@
 <g class="fish"><path d="M0 0c10-8 26-8 34 0-8 8-24 8-34 0Zm34 0 10-7v14Z" fill="#3E5A66"/></g></svg></div><div class="deco deco-paws side-l at-mid" aria-hidden="true"><svg viewBox="0 0 110 420"><g fill="#6E6244"><g class="paw" style="--i:0" transform="translate(30 380) rotate(-10)"><ellipse cx="0" cy="6" rx="9" ry="8"/><circle cx="-9" cy="-6" r="3.6"/><circle cx="-3" cy="-11" r="3.6"/><circle cx="4" cy="-11" r="3.6"/><circle cx="10" cy="-6" r="3.6"/></g><g class="paw" style="--i:1" transform="translate(64 340) rotate(12)"><ellipse cx="0" cy="6" rx="9" ry="8"/><circle cx="-9" cy="-6" r="3.6"/><circle cx="-3" cy="-11" r="3.6"/><circle cx="4" cy="-11" r="3.6"/><circle cx="10" cy="-6" r="3.6"/></g><g class="paw" style="--i:2" transform="translate(36 290) rotate(-8)"><ellipse cx="0" cy="6" rx="9" ry="8"/><circle cx="-9" cy="-6" r="3.6"/><circle cx="-3" cy="-11" r="3.6"/><circle cx="4" cy="-11" r="3.6"/><circle cx="10" cy="-6" r="3.6"/></g><g class="paw" style="--i:3" transform="translate(70 250) rotate(14)"><ellipse cx="0" cy="6" rx="9" ry="8"/><circle cx="-9" cy="-6" r="3.6"/><circle cx="-3" cy="-11" r="3.6"/><circle cx="4" cy="-11" r="3.6"/><circle cx="10" cy="-6" r="3.6"/></g><g class="paw" style="--i:4" transform="translate(40 200) rotate(-6)"><ellipse cx="0" cy="6" rx="9" ry="8"/><circle cx="-9" cy="-6" r="3.6"/><circle cx="-3" cy="-11" r="3.6"/><circle cx="4" cy="-11" r="3.6"/><circle cx="10" cy="-6" r="3.6"/></g><g class="paw" style="--i:5" transform="translate(74 160) rotate(10)"><ellipse cx="0" cy="6" rx="9" ry="8"/><circle cx="-9" cy="-6" r="3.6"/><circle cx="-3" cy="-11" r="3.6"/><circle cx="4" cy="-11" r="3.6"/><circle cx="10" cy="-6" r="3.6"/></g><g class="paw" style="--i:6" transform="translate(44 110) rotate(-10)"><ellipse cx="0" cy="6" rx="9" ry="8"/><circle cx="-9" cy="-6" r="3.6"/><circle cx="-3" cy="-11" r="3.6"/><circle cx="4" cy="-11" r="3.6"/><circle cx="10" cy="-6" r="3.6"/></g><g class="paw" style="--i:7" transform="translate(78 70) rotate(12)"><ellipse cx="0" cy="6" rx="9" ry="8"/><circle cx="-9" cy="-6" r="3.6"/><circle cx="-3" cy="-11" r="3.6"/><circle cx="4" cy="-11" r="3.6"/><circle cx="10" cy="-6" r="3.6"/></g></g></svg></div>
   <div class="wrap">
     <div class="final map-final rv" data-theme="#1A2414">
-      <svg class="mapill" viewBox="-90 190 1000 540" data-vb-m="400 250 480 380" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Карта: участок Совиный Бор у лесного озера">
+      <svg class="mapill" viewBox="-90 190 1000 540" data-vb-m="320 230 580 430" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Карта: участок Совиный Бор у лесного озера">
 <defs><clipPath id="lakeClip"><path d="M698.0 254.0 Q712 258 736.0 265.0 Q760 272 781.5 280.0 Q803 288 812.5 295.0 Q822 302 829.0 318.0 Q836 334 832.0 353.0 Q828 372 820.0 396.0 Q812 420 806.0 436.0 Q800 452 791.0 459.0 Q782 466 761.0 465.0 Q740 464 715.0 461.0 Q690 458 673.0 455.0 Q656 452 653.0 436.0 Q650 420 651.0 390.0 Q652 360 653.0 330.0 Q654 300 659.0 284.0 Q664 268 674.0 259.0 Q684 250 698.0 254.0Z"/></clipPath>
 <filter id="mGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="10"/></filter></defs>
 <rect x="-130" y="150" width="1080" height="620" fill="#1A2414"/>
@@ -170,7 +176,7 @@
       <div>
         <a class="brand" href="../index.html" style="padding:0"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="16" fill="#E9B44C"/><path d="M9 11.5 12 9l4 2 4-2 3 2.5V19a7 7 0 0 1-14 0v-7.5Z" fill="#131209"/><circle cx="13" cy="15" r="2.4" fill="#E9B44C"/><circle cx="19" cy="15" r="2.4" fill="#E9B44C"/><circle cx="13" cy="15" r="1" fill="#131209"/><circle cx="19" cy="15" r="1" fill="#131209"/><path d="m16 17.2-1.1 1.6h2.2L16 17.2Z" fill="#E9B44C"/></svg><span>Совиный Бор</span></a>
         <p class="big">До встречи<br>в Бору</p>
-        <a class="btn btn-primary" href="../booking/index.html#booking">Выбрать даты <i class="ph ph-arrow-right"></i></a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="../booking/index.html#booking">Выбрать даты <i class="ph ph-arrow-right"></i></a><a class="btn btn-ghost" href="https://t.me/IlyaMKV" target="_blank" rel="noopener"><i class="ph ph-telegram-logo"></i> Мы в ТГ</a></div>
       </div>
       <div><h4>Сайт</h4><ul><li><a href="../index.html">Главная</a></li><li><a href="../domik/index.html">Домик</a></li><li><a href="../territory/index.html">Территория</a></li><li><a href="../booking/index.html">Цены и бронь</a></li><li><a href="../offers/index.html">Акции</a></li><li><a href="../rules/index.html">Правила</a></li><li><a href="../contacts/index.html">Как добраться</a></li></ul></div>
       <div><h4>Адрес</h4><p class="t-sm muted">Московская область, г.о. Лосино‑Петровский, д. Митянино, территория Приозерная, ул. Лесная, участок 27</p>
@@ -184,6 +190,15 @@
     <p class="t-xs" style="color:var(--dim);margin-top:16px">Иллюстрации на сайте являются художественным образом места.</p>
   </div>
 </footer>
+<div class="tgchat" data-tg="https://t.me/IlyaMKV">
+  <div class="tc-panel" role="dialog" aria-label="Чат в Telegram" hidden>
+    <div class="tc-head"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="16" fill="#E9B44C"/><path d="M9 11.5 12 9l4 2 4-2 3 2.5V19a7 7 0 0 1-14 0v-7.5Z" fill="#131209"/><circle cx="13" cy="15" r="2.4" fill="#E9B44C"/><circle cx="19" cy="15" r="2.4" fill="#E9B44C"/><circle cx="13" cy="15" r="1" fill="#131209"/><circle cx="19" cy="15" r="1" fill="#131209"/><path d="m16 17.2-1.1 1.6h2.2L16 17.2Z" fill="#E9B44C"/></svg><div><b>Совиный Бор</b><span>Отвечаем в Telegram</span></div><button class="tc-x" type="button" aria-label="Закрыть чат"><i class="ph ph-x"></i></button></div>
+    <div class="tc-body"><div class="tc-msg">Привет! Я сова Бора. Напишите вопрос, и он сразу уйдёт администратору в Telegram.</div>
+      <div class="tc-chips"><button type="button">Свободны ли выходные?</button><button type="button">Можно с собакой?</button><button type="button">Хочу забронировать</button></div></div>
+    <form class="tc-form"><textarea rows="2" placeholder="Ваш вопрос…" aria-label="Сообщение"></textarea><button class="tc-send" type="submit" aria-label="Отправить в Telegram"><i class="ph ph-paper-plane-tilt"></i></button></form>
+  </div>
+  <button class="tc-fab" type="button" aria-label="Написать в Telegram" aria-expanded="false"><i class="ph ph-telegram-logo"></i><span class="tc-dot"></span></button>
+</div>
 <a class="mbar" href="../booking/index.html#booking" aria-label="Выбрать даты"><span><small>Домик у озера</small><b>от 9 000 ₽ / ночь</b></span><span class="btn btn-primary btn-sm">Даты <i class="ph ph-arrow-right"></i></span></a>
 <script>window.OWL_MAP = {"domik": 0, "territory": 1, "booking": 2, "offers": 3, "rules": 1, "contacts": 3, "privacy": 0};</script>
 <script>window.SOVBOR_CONFIG = { bookingEndpoint: '', promoEndpoint: '' };</script>
