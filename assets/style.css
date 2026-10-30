@@ -1454,3 +1454,8 @@ html.light .tc-panel { box-shadow: 0 24px 60px rgba(30,28,20,.2); }
 .owl-say.below, .owl-say.below.on { transform: translate(calc(-50% + 20px), 14px) scale(1); animation: none; transform-origin: 50% 0; }
 .owl-say.below:not(.on) { transform: translate(calc(-50% + 20px), 14px) scale(0); }
 .owl-say.below::after { right: auto; left: calc(50% - 7px); top: -6px; bottom: auto; border-radius: var(--r) 0 0 0; }
+/* Отступы ещё компактнее */
+.section { padding: var(--s-500) 0; }
+@media (max-width: 767px) { .section { padding: var(--s-400) 0; } }
+.tagline { padding: var(--s-700) 0; }
+.head, .head-row { margin-bottom: var(--s-400); }
