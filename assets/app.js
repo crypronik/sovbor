@@ -613,6 +613,7 @@
   var cur = '', tk = false;
   function bgOf(el) {
     for (; el && el !== document.documentElement; el = el.parentElement) {
+      if (document.documentElement.classList.contains('light') && el.classList && el.classList.contains('ill')) return '#CFE6F0';
       var t = el.getAttribute && el.getAttribute('data-theme'); if (t) return t;
       var c = getComputedStyle(el).backgroundColor;
       if (c && c !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(c)) return c;

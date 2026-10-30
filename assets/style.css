@@ -1468,3 +1468,36 @@ html.light .map-final .map-card .eyebrow, html.light .hero .eyebrow, html.light 
 html.light .final .btn-ghost, html.light .map-final .btn-ghost, html.light .hero .btn-ghost { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.25); color: #F3EFE6; }
 html.light .final h2, html.light .final h2 .line-in { color: #F3EFE6; }
 html.light .ht-mode, html.light .promo-toggle { color: #A86F12; }
+
+/* ================= Светлая тема: дневные рисованные сцены ================= */
+.ill-svg .sun, .ill-svg .clouds { display: none; }
+html.light .ill-svg .sun, html.light .ill-svg .clouds { display: inline; }
+html.light .ill-svg .moon, html.light .ill-svg .star, html.light .ill-svg .flies { display: none; }
+html.light .ill-svg .c-sky { fill: #CFE6F0; }
+html.light .ill-svg .c-far { fill: #9BBF95; }
+html.light .ill-svg .c-mid { fill: #6E9A68; }
+html.light .ill-svg .c-lake { fill: #7FB6CC; }
+html.light .ill-svg .c-near { fill: #4C7A47; }
+html.light .ill-svg .c-tree { fill: #3B2F22; }
+html.light .ill-svg .sh { fill: #FFFFFF; }
+html.light .ill-svg .mr { fill: #FFFFFF; }
+html.light .ill-svg .owl { fill: #5A4632; }
+html.light .ill-svg .owl path { stroke: #3B2F22; }
+html.light .ill-svg .owl-eyes circle { fill: #F2C14E; }
+html.light .ill-svg .win rect { fill: #F6E3B4; }
+html.light .ill-svg .win-glow, html.light .ill-svg .fire-glow { opacity: .08; }
+html.light .ill-svg .trail { stroke: #E9DDB8; }
+html.light .ill-svg .gb { fill: #FFF6DC; }
+html.light .ill-svg .cl { opacity: .9; animation: cloud 60s linear infinite; }
+html.light .ill-svg .c2 { animation-duration: 80s; } html.light .ill-svg .c3 { animation-duration: 70s; animation-direction: reverse; }
+@keyframes cloud { from { transform: translateX(-120px); } to { transform: translateX(220px); } }
+html.light .phero.ill { color: #1E1C14; --text: #1E1C14; --muted: #3F3B30; }
+html.light .phero.ill h1, html.light .phero.ill h1 .line-in { background: linear-gradient(90deg, #1E1C14 0%, #4C5A3A 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+html.light .phero.ill .sub { color: #2E2B22; }
+html.light .phero.ill .crumbs, html.light .phero.ill .crumbs a { color: #3F3B30; }
+html.light .phero.ill .eyebrow { color: #8A5A0E; }
+html.light .phero.ill .phero-in { text-shadow: 0 1px 12px rgba(207, 230, 240, .7); }
+@media (max-width: 767px) { html.light .phero.ill::before { background: rgba(207, 230, 240, .35); } }
+html.light .phero.ill .phero-in { text-shadow: none; }
+html.light .phero.ill h1, html.light .phero.ill h1 .line-in { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #1E1C14; }
+@media (max-width: 1023px) { html.light .phero.ill::before { display: block; background: rgba(230, 241, 245, .62); z-index: 0; } html.light .phero.ill .phero-in { position: relative; z-index: 1; } }
