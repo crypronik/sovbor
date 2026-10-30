@@ -1459,3 +1459,12 @@ html.light .tc-panel { box-shadow: 0 24px 60px rgba(30,28,20,.2); }
 @media (max-width: 767px) { .section { padding: var(--s-400) 0; } }
 .tagline { padding: var(--s-700) 0; }
 .head, .head-row { margin-bottom: var(--s-400); }
+/* Светлая тема: тёмные по смыслу блоки получают тёмную палитру целиком */
+html.light .hero, html.light .phero.ill, html.light .final, html.light .map-final .map-card, html.light .rc, html.light .offer.photo, html.light .bmodal .hero {
+  --text: #F3EFE6; --muted: #CFC9BC; --dim: #8C8677; --line: #313131; --surface: #1F1F1F; --bg-2: #181818;
+  color: var(--text);
+}
+html.light .map-final .map-card .eyebrow, html.light .hero .eyebrow, html.light .phero.ill .eyebrow, html.light .final .eyebrow { color: var(--accent); }
+html.light .final .btn-ghost, html.light .map-final .btn-ghost, html.light .hero .btn-ghost { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.25); color: #F3EFE6; }
+html.light .final h2, html.light .final h2 .line-in { color: #F3EFE6; }
+html.light .ht-mode, html.light .promo-toggle { color: #A86F12; }
